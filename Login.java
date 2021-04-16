@@ -6,8 +6,8 @@ public class Login {
 		try {
 			Long mobileNumber = Long.valueOf(mobileNumberString);
 			int mobileNumberLength = mobileNumber.toString().trim().length();
-			int noOfDigitsForMobileNumber = 10;
-			if(mobileNumberLength == noOfDigitsForMobileNumber) {
+			int numberOfDigitsForMobileNumber = 10;
+			if(mobileNumberLength == numberOfDigitsForMobileNumber) {
 				validMobileNumber = true;
 			}
 		} catch (NumberFormatException e) {
