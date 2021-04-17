@@ -18,11 +18,18 @@ public class OlaApp {
 		String cabType = " micro ";
 		boolean isValidCabType = CabTypeManager.validateCabType(cabType);
 		System.out.println("Is Valid Cab Type : " + isValidCabType);
-		int farePrice;
+		int cabTypeFarePrice = 0;
 		if (isValidCabType) {
-			farePrice = CabTypeManager.cabTypeFarePrice(cabType);
-			System.out.println("Fare Price for " + cabType.trim() + " cab is : " + farePrice);			
+			cabTypeFarePrice = CabTypeManager.cabTypeFarePrice(cabType);
+			System.out.println("Fare Price for " + cabType.trim() + " cab per kilometer is : " + cabTypeFarePrice);			
 		}
 		
+		int kilometer = 8;
+		int totalFarePriceWithoutGST = PriceEstimator.calculateTotalFarePriceWithoutGST(cabTypeFarePrice, kilometer);
+		System.out.println("Total Fare Price Without GST : " + totalFarePriceWithoutGST);
+
+		double totalFarePriceWithGST = GSTCalculator.calculateTotalFarePriceWithGST(totalFarePriceWithoutGST);
+		System.out.println("Total Fare Price With GST : " + totalFarePriceWithGST);
+
 	}
 }
