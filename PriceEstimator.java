@@ -35,4 +35,15 @@ public class PriceEstimator {
 		}
 	}
 
+	/**
+	 * Calculates the total fare for senior citizen with 50% offer.
+	 * @param totalFarePriceWithGST
+	 * @return
+	 */
+	public static double calculateTotalFareForSeniorCitizen(double totalFarePriceWithGST) {
+		double offerPercentageForSeniorCitizen = 50;
+		double totalFareForSeniorCitizen = totalFarePriceWithGST * (offerPercentageForSeniorCitizen / 100.0);
+		return totalFareForSeniorCitizen;
+	}
+
 }

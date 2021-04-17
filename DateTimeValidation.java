@@ -17,7 +17,6 @@ public class DateTimeValidation {
 			LocalDate.parse(journeyDate);
 			validDate = true;
 		} catch (DateTimeParseException e) {
-			System.out.println(e);
 			validDate = false;
 		}
 		return validDate;
@@ -38,5 +37,39 @@ public class DateTimeValidation {
 		}
 		return validTime;
 	}
+
+	/**
+	 * Checks the date of birth.
+	 * Returns true if the given date of birth is before current date.
+	 * Otherwise returns false.
+	 * @param dateOfBirthString
+	 * @return
+	 */
+	public static boolean validateDateOfBirth(String dateOfBirthString) {
+		boolean validDateOfBirth = false;
+		try {
+			LocalDate currentDate = LocalDate.now();
+			LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString);
+			if (dateOfBirth.isBefore(currentDate)) {
+				validDateOfBirth = true;
+			}
+		} catch (DateTimeParseException e) {
+			validDateOfBirth = false;
+		}
+		return validDateOfBirth;
+	}
+	
+	/**
+	 * Calculates the age for the given date of birth.
+	 * @param dateOfBirthString
+	 * @return
+	 */
+	public static byte calculateAge(String dateOfBirthString) {
+		LocalDate currentDate = LocalDate.now();
+		LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString);
+		byte age = (byte) (currentDate.getYear() - dateOfBirth.getYear() );
+		return age;
+	}
+
 
 }
