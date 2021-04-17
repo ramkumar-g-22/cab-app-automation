@@ -30,6 +30,24 @@ public class OlaApp {
 
 		double totalFarePriceWithGST = GSTCalculator.calculateTotalFarePriceWithGST(totalFarePriceWithoutGST);
 		System.out.println("Total Fare Price With GST : " + totalFarePriceWithGST);
+			
+		String journeyDate = "2021-04-20";
+		boolean isValidDate = DateTimeValidation.validateDate(journeyDate);
+		System.out.println("Is Valid Date : " + isValidDate);
+		String pickUpTime = "22:22";
+		boolean isValidTime = DateTimeValidation.validateTime(pickUpTime);
+		System.out.println("Is Valid Time : " + isValidTime);
 
+		String cardExpiryDate = "2021-06-20";
+		if (isValidDate && isValidTime) {
+			boolean isBooked = BookingCab.bookCab(cardExpiryDate, journeyDate, pickUpTime);
+			if (isBooked) {
+				System.out.println("🛺🛺🛺 Your Ride is booked ✔✔✔");
+				System.out.println("Journey Date : " + journeyDate);
+				System.out.println("PickUp Time : " + pickUpTime);				
+			}else {
+				System.out.println("Not a valid card");
+			}
+		}
 	}
 }
